@@ -48,50 +48,62 @@ trigger1 = p2movetype != H
 var(21) = 0
 
 ;--------------------------------------------------------------------------------
-;ヒット数カウント
-[State -2,ヒット数]
+;????
+[State -2, uki]
 type = VarAdd
 triggerall = !(stateno=[800,810])
 triggerall = !(stateno=[3000,3499])
 trigger1 = movehit = 1 || projhit = 1
-var(13) = 1 + (var(8) > 0)*2
+var(13) = 1
 
-[State -2,ヒット数初期化]
+;加重加算
+[State -2,ヒット数]
+type = VarAdd
+triggerall = movehit = 1
+trigger1 = var(8)
+var(13) = 2
+[State -2,ヒット数]
+type = VarAdd
+triggerall = movehit = 1
+trigger1 = stateno = 220
+var(13) = 1
+
+[State -2,set]
 type = VarSet
 triggerall = var(13) != 0
 trigger1 = p2MoveType != H
 trigger1 = NumTarget = 0
 var(13) = 0
 
-[State -2,浮き補正]
+[State -2,uki]
 type = varset
 trigger1 = Var(13) >= 5
 fVar(20) = 0.50*(var(13))
 
-[State -2,浮き補正リセット]
+[State -2,uki]
 type = varset
 triggerall = p2MoveType != H
 trigger1 = var(13) = 0
 fVar(20) = 0
 
-[State -2,投げ補正初期化]
+[State -2,set]
 type = VarSet
 triggerall = var(14) != 0
 trigger1 = EnemyNear,MoveType != H
 trigger1 = NumTarget = 0
 var(14) = 0
 
-[State -2,コンボ補正3]
+[State -2,set]
 type = VarSet
 trigger1 = fvar(10) < 0.5
 trigger1 = (stateno=[3000,3499]) && (!var(14))
 fVar(10) = IFElse(var(7), 1.0, 0.5)
-[State -2,コンボ補正3]
+[State -2,set]
 type = VarSet
 trigger1 = !(stateno=[3000,3499]) || (var(14))
 fVar(10) = ifelse((1.0-(var(13)*0.05))*ifelse(var(14),.5,1)<=0,0.1,(1.0-(var(13)*0.05))*ifelse(var(14),.5,1))
 
-[State -2,アサルトフラグ]
+[State -2,set]
 type = varset
 trigger1 = (statetype != A && stateno != 52 && stateno != 700)
 trigger2 = movetype = H

@@ -1382,21 +1382,6 @@ trigger1 = Time = 0
 x = -1.2
 y = gethitvar(fall.yvel)
 
-[State 1000, p]
-type = posadd
-trigger1 = gethitvar(fall.yvel) = -10.1
-trigger1 = time = 1
-y = -10
-[State 1000, p]
-type = changeanim2
-trigger1 = gethitvar(fall.yvel) = -10.1
-value = 1690
-
-[State 1000, p]
-type = angledraw
-trigger1 = gethitvar(fall.yvel) = -10.1
-value = 0+(time*30)
-
 [State 5101, 1] ;Coming hit ground anim (normal)
 type = ChangeAnim
 triggerall = time = 0
@@ -1424,29 +1409,6 @@ y = 20
 type = VelAdd
 trigger1 = 1
 y = .45
-
-[State 5040, 5] ;Recover near ground
-type = SelfState
-triggerall = gethitvar(fall.yvel) != -10.1
-triggerall = gethitvar(fall.yvel) < 0
-triggerall = time >= 15
-triggerall = Vel Y > 0
-triggerall = Pos Y >= -20
-triggerall = alive
-trigger1 = canrecover
-trigger1 = Command = "recovery"
-value = 5200 ;HITFALL_RECOVER
-
-[State 5040, 6]; Recover in mid air
-type = SelfState
-triggerall = gethitvar(fall.yvel) != -10.1
-triggerall = gethitvar(fall.yvel) < 0
-triggerall = time >= 15
-triggerall = Vel Y > 0
-triggerall = alive
-trigger1 = canrecover
-trigger1 = Command = "recovery"
-value = 5210 ;HITFALL_AIRRECOVER
 
 [State 5101, 6] ;Hit ground
 type = selfState
@@ -2387,7 +2349,6 @@ guard.slidetime = 14
 ground.hittime  = 14
 ground.velocity = -4
 air.velocity = -2.8, -3.8 + fVar(20)
-fall.xvelocity = ifelse((enemynear,facing=facing),1,-1)
 yaccel = 0.45
 getpower = 40,0
 givepower = 20,0
@@ -2469,7 +2430,6 @@ guard.slidetime = 14
 ground.hittime  = 14
 ground.velocity = -4
 air.velocity = -2.8, -3.8 + fVar(20)
-fall.xvelocity = ifelse((enemynear,facing=facing),1,-1)
 yaccel = 0.45
 getpower = 50,0
 givepower = 25,0
@@ -2554,10 +2514,9 @@ ground.type = High
 ground.slidetime = 16
 guard.slidetime = 16
 ground.hittime  = 16
-ground.velocity = -1.2, -10 + fVar(20)
+ground.velocity = -1.2, -10.5 + fVar(20)
 guard.velocity = -3.5
-air.velocity = -1.2, -9 + fVar(20)
-fall.xvelocity = ifelse((enemynear,facing=facing),1,-1)
+air.velocity = -1.2, -10.5 + fVar(20)
 yaccel = 0.45
 getpower = 60,0
 givepower = 30,0
@@ -2731,7 +2690,6 @@ guard.slidetime = 10
 ground.hittime  = 10
 ground.velocity = -4
 air.velocity = -2.8, -3.8 + fVar(20)
-fall.xvelocity = ifelse((enemynear,facing=facing),1,-1)
 yaccel = 0.45
 getpower = 40,0
 givepower = 20,0
@@ -2803,7 +2761,6 @@ guard.hittime  = 14
 guard.ctrltime  = 14
 ground.velocity = -4
 air.velocity = -2.8, -3.8 + fVar(20)
-fall.xvelocity = ifelse((enemynear,facing=facing),1,-1)
 yaccel = 0.45
 getpower = 50,0
 givepower = 25,0
@@ -3017,7 +2974,6 @@ guard.hittime  = 16
 ground.velocity = -2.6, -3 + fVar(20)
 air.velocity = -2.6, -3 + fVar(20)
 guard.velocity = -3.5
-fall.xvelocity = ifelse((enemynear,facing=facing),1,-1)
 yaccel = 0.45
 getpower = 80,0
 givepower = 40,0
@@ -3189,7 +3145,7 @@ type = HitDef
 trigger1 = AnimElem = 2
 attr = A, NA
 animtype  = light
-damage    = ceil(36*fVar(10)),0
+damage    = ceil(44*fVar(10)),0
 guardflag = HA
 pausetime = IfElse(var(8) > 0, 30, 11), IfElse(var(8) > 0, 30, 11)
 sparkno = -1
@@ -3206,7 +3162,6 @@ guard.ctrltime = 16
 ground.velocity = -4
 guard.velocity = IfElse(var(8) > 0, -11, -4)
 air.velocity = -2.8, -3.8 + fVar(20)
-fall.xvelocity = ifelse((enemynear,facing=facing),1,-1)
 yaccel = 0.45
 getpower = 40,0
 givepower = 20,(var(8)>0)*300
@@ -3260,6 +3215,11 @@ movetype= I
 type = Width
 trigger1 = 1
 edge = 5,0
+
+[State 200, end]
+type = CtrlSet
+trigger1 = animelemtime(3) = 9
+value = 1
 
 ;---------------------------------------------------------------------------
 ;JB
@@ -3344,7 +3304,6 @@ ground.velocity = -4
 guard.velocity = IfElse(var(8) > 0, -11, -4)
 air.velocity = IfElse(var(8) > 0, -2, -2.8), IfElse(var(8) > 0, -8, -3.8 + fVar(20))
 airguard.velocity = IfElse(var(8) > 0, -11, -2.8), -1.4
-fall.xvelocity = ifelse((enemynear,facing=facing),1,-1)
 yaccel = 0.45
 getpower = 50,0
 givepower = 25,(var(8)>0)*300
@@ -3399,6 +3358,11 @@ movetype= I
 type = ChangeState
 trigger1 = vel y > 0 && pos y >= 0
 value = 52
+
+[State 200, end]
+type = CtrlSet
+trigger1 = animelemtime(3) = 9
+value = 1
 
 ;---------------------------------------------------------------------------
 ;JB(S)
@@ -3566,7 +3530,6 @@ ground.velocity = -4
 guard.velocity = IfElse(var(8) > 0, -11, -4)
 air.velocity = IfElse(var(8) > 0, -2, -2.8), IfElse(var(8) > 0, -8, -3.8 + fVar(20))
 airguard.velocity = IfElse(var(8) > 0, -11, -2.8), -1.4
-fall.xvelocity = ifelse((enemynear,facing=facing),1,-1)
 yaccel = 0.45
 getpower = 80,0
 givepower = 40,(var(8)>0)*300
@@ -3627,6 +3590,11 @@ edge = 5,0
 type = ChangeState
 trigger1 = vel y > 0 && pos y >= 0
 value = 52
+
+[State 200, end]
+type = CtrlSet
+trigger1 = animelemtime(3) = 9
+value = 1
 
 ;---------------------------------------------------------------------------
 ;JC(S)
@@ -4133,7 +4101,6 @@ guard.slidetime = 10
 ground.hittime  = 10
 ground.velocity = -7,-3 + fVar(20)
 air.velocity = -7,-3 + fVar(20)
-fall.xvelocity = ifelse((enemynear,facing=facing),1,-1)
 yaccel = 0.45
 getpower = 0,0
 givepower = 0,0
@@ -4751,7 +4718,6 @@ guard.slidetime = 18
 ground.velocity = -1.5
 guard.velocity = -2
 air.velocity = -1.5, 6.5
-fall.xvelocity = ifelse((enemynear,facing=facing),1,-1)
 yaccel = 0.45
 getpower = 0,0
 givepower = 0,0
@@ -4794,7 +4760,6 @@ guard.slidetime = 18
 ground.velocity = -6,-3.5
 guard.velocity = -2
 air.velocity = -6,-3.5
-fall.xvelocity = ifelse((enemynear,facing=facing),1,-1)
 yaccel = 0.45
 getpower = 0,0
 givepower = 50,0
@@ -5237,7 +5202,6 @@ guard.ctrltime = 21
 ground.velocity = -4.5,-5.5 + root,fvar(20)
 guard.velocity = -3.5
 air.velocity = -4.5,-5.5 + root,fvar(20)
-fall.xvelocity = ifelse((enemynear,facing=facing),1,-1)
 yaccel = 0.45
 getpower = 0,0
 givepower = 10,0
@@ -5274,7 +5238,6 @@ guard.ctrltime = 18
 ground.velocity = -2.1,-8.5 + root,fvar(20)
 guard.velocity = -3.5
 air.velocity = -2.1,-8.5 + root,fvar(20)
-fall.xvelocity = ifelse((enemynear,facing=facing),1,-1)
 yaccel = 0.45
 getpower = 0,0
 givepower = 10,0
@@ -5320,7 +5283,6 @@ ground.hittime  = 18
 ground.velocity = -2.5,-4.5 + root,fvar(20)
 guard.velocity = -3.5
 air.velocity = -2,-4.5 + root,fvar(20)
-fall.xvelocity = ifelse((enemynear,facing=facing),1,-1)
 yaccel = 0.45
 getpower = 0,0
 givepower = 10,0
@@ -6194,6 +6156,7 @@ bindtime = -1
 removetime = -2
 sprpriority = 3
 removeongethit = 1
+scale = 1.1, 1
 
 [State 0, Explod]
 type = Explod
@@ -6259,7 +6222,6 @@ ground.hittime  = 18
 ground.velocity = -3.5, -6.5 + root,fVar(20)
 guard.velocity = -4.5
 air.velocity = -3.5, -6.5 + root,fVar(20)
-fall.xvelocity = ifelse((enemynear,facing=facing),1,-1)
 yaccel = 0.45
 getpower = 0,0
 givepower = 40,0
@@ -6295,7 +6257,6 @@ ground.hittime  = 18
 ground.velocity = -3.5, -6.5 + root,fVar(20)
 guard.velocity = -4.5
 air.velocity = -3.5, -6.5 + root,fVar(20)
-fall.xvelocity = ifelse((enemynear,facing=facing),1,-1)
 yaccel = 0.45
 getpower = 0,0
 givepower = 40,0
@@ -6955,7 +6916,7 @@ attr = S, SA
 animtype  = Hard
 damage    = ceil(Ifelse(var(20), 104 ,60)*root,fVar(10))
 ;guardflag = 
-pausetime = 0,16
+pausetime = 0,21
 guard.pausetime = 8,8
 sparkno = s6002
 guard.sparkno = s6040
@@ -6971,8 +6932,7 @@ guard.hittime = 13
 guard.ctrltime = 13
 ground.velocity = -2
 guard.velocity = -2
-air.velocity = -1.5,-6.5 + root,fvar(20)
-fall.xvelocity = ifelse((enemynear,facing=facing),1,-1)
+air.velocity = -.5,-6.5 + root,fvar(20)
 yaccel = 0.45
 getpower = 0,0
 givepower = 10,0
@@ -7183,7 +7143,6 @@ ground.hittime  = IfElse(var(20), 30, 23)
 guard.slidetime = IfElse(var(20), 30, 23)
 ground.velocity = -2;12
 air.velocity = -2, -1.5
-fall.xvelocity = ifelse((enemynear,facing=facing),1,-1)
 yaccel = 0.45
 getpower = 0,0
 givepower = 0,0
@@ -7790,7 +7749,6 @@ guard.slidetime = 18
 ground.velocity = -3.5
 guard.velocity = -3.5
 air.velocity = -1.5,-6.5 + root,fvar(20)
-fall.xvelocity = ifelse((enemynear,facing=facing),1,-1)
 yaccel = 0.45
 getpower = 0,0
 givepower = 10,0
@@ -8330,7 +8288,6 @@ guard.ctrltime = 13
 ground.velocity = -4.7, -6.5 + root,fvar(20)
 guard.velocity = -2
 air.velocity = -4.7,-6.5 + root,fvar(20)
-fall.xvelocity = ifelse((enemynear,facing=facing),1,-1)
 fall.yvelocity = 0
 yaccel = 0.45
 getpower = 0,0
@@ -8368,7 +8325,6 @@ guard.ctrltime = 13
 ground.velocity = -4.7, -6.5 + root,fvar(20)
 guard.velocity = -2
 air.velocity = -4.7,-6.5 + root,fvar(20)
-fall.xvelocity = ifelse((enemynear,facing=facing),1,-1)
 yaccel = 0.45
 getpower = 0,0
 givepower = 50,0
