@@ -857,6 +857,16 @@ trigger1 = stateno = [150,153]
 trigger1 = time > 0
 value = 720
 
+[State -1, 6c]
+type = ChangeState
+value = 230
+triggerall = !AILevel
+triggerall = command = "z"
+triggerall = command = "holdfwd"
+triggerall = statetype != A
+trigger1 = ctrl && stateno != 100
+trigger2 = (stateno = 200||stateno = 210||stateno = 220||stateno = 400||stateno = 410||stateno = 420) && var(4)
+
 ;==============================================================================
 ; ’ÊíUŒ‚‹Z
 ;==============================================================================

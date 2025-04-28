@@ -48,21 +48,19 @@ trigger1 = p2movetype != H
 var(21) = 0
 
 ;--------------------------------------------------------------------------------
-;????
-[State -2, uki]
+[State -2, hit]
 type = VarAdd
 triggerall = !(stateno=[800,810])
 triggerall = !(stateno=[3000,3499])
 trigger1 = movehit = 1 || projhit = 1
 var(13) = 1
 
-;加重加算
-[State -2,ヒット数]
+[State -2,hit]
 type = VarAdd
 triggerall = movehit = 1
 trigger1 = var(8)
 var(13) = 2
-[State -2,ヒット数]
+[State -2,hit]
 type = VarAdd
 triggerall = movehit = 1
 trigger1 = stateno = 220
@@ -146,14 +144,13 @@ trigger1 = MoveGuarded
 var(8) = -1
 ignorehitpause = 1
 
-;movehit感知
-[State -2,ヒット数]
+[State -2, JS]
 type = Varset
 trigger1 = movecontact = 1
 var(19) = 1
 IgnoreHitPause = 1
 ;reset
-[State -2,ヒット数]
+[State -2,JS]
 type = Varset
 trigger1 = movecontact = 1
 var(19) = 0
@@ -204,7 +201,7 @@ value = 11, 1 + Random%2
 channel = 10
 
 ;---------------------------------------------------------------------------
-[State -1, タッグ用生死判別];
+[State -1, tag];
 Type = VarSet
 triggerall = RoundState = 2
 trigger1 = NumEnemy = 1
@@ -213,7 +210,7 @@ trigger2 = EnemyNear(0),life > 0
 var(48) = 0
 IgnoreHitPause = 1
 
-[State -1, タッグ用生死判別];
+[State -1, tag];
 Type = VarSet
 triggerall = RoundState = 2
 trigger1 = NumEnemy = 2
@@ -221,14 +218,14 @@ trigger1 = EnemyNear(0),life <= 0
 var(48) = 1
 IgnoreHitPause = 1
 
-[State -2, クリップボード]
+[State -2, clip]
 type     = DisplayToClipBoard
 trigger1 = !AILevel
-text     = "hit=%d,power=%d,f10=%f, Assault=%d, intro=%d"
-params   = var(13),power,fvar(10), var(8), var(57)
+text     = "hit=%d,power=%d,f10=%f, Assault=%d, 20=%d"
+params   = var(13),power,fvar(10), var(8), var(20)
 IgnoreHitPause = 1
 
-[State -2, クリップボード]
+[State -2, clip]
 type     = DisplayToClipBoard
 trigger1 = AILevel
 text     = "f10=%f, f20=%f, moveset=%d"
@@ -290,7 +287,7 @@ volume = 255
 channel = 0
 
 ;---------------------------------------------------------------------------
-;スタンド被ダメ時
+;Stand gethit
 [state -3, end]
 type = changestate
 triggerall = stateno != [15000,15999]
@@ -323,3 +320,31 @@ value = 15020
 ctrl = 0
 
 ;---------------------------------------------------------------------------
+
+[State 200, 2];????SE
+type = Playsnd
+trigger1 = numtarget(211)
+trigger1 = target(211),Stateno = 4501
+trigger1 = target(211),time = 1
+trigger1 = target(211),statetype = A
+Value = s510, 0
+
+[State 200, 2];????
+type = Explod
+trigger1 = numtarget(211)
+trigger1 = target(211),Stateno = 4501
+trigger1 = target(211),time = 1
+trigger1 = target(211),statetype = A
+anim = 6500
+pos = -30, -40
+Postype = p2
+facing = -1
+sprpriority = -2
+ownpal = 1
+pausemovetime = 99999
+supermovetime = 99999
+supermove = 1
+bindtime = 1
+;persistent = 0
+ignorehitpause = 1
+scale = .5,.5
