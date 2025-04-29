@@ -2709,15 +2709,9 @@ trigger1 = animelemtime(1) = 0
 x = IfElse(var(20), 9.6, 6)
 
 [State 200, vel]
-type = VelMul
-triggerall = anim = 231
-trigger1 = animelemtime(2) >= 4
-x = .9
-
-[State 200, vel]
 type = VelSet
 triggerall = anim = 231
-trigger1 = animelemtime(5) = 0
+trigger1 = animelemtime(3) = 0
 x = 0
 
 [State 200, vo]
@@ -2750,10 +2744,10 @@ hitsound   = s5,2
 guardsound = s10,0
 priority = 4, Hit
 ground.type = High
-ground.slidetime = 20
-guard.slidetime = 20
-ground.hittime  = 20
-ground.velocity = IfElse(var(20), -9, -9), IfElse(var(20), -6.2 + fVar(20), 0)
+ground.slidetime = IfElse(var(20), 22, 16)
+guard.slidetime = IfElse(var(20), 22, 16)
+ground.hittime  = IfElse(var(20), 22, 16)
+ground.velocity = -11, IfElse(var(20), -6.2 + fVar(20), 0)
 air.velocity = IfElse(var(20), -9, -4), IfElse(var(20), -6.2, -3.8) + fVar(20)
 guard.velocity = -11
 yaccel = 0.45
