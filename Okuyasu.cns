@@ -2724,7 +2724,7 @@ channel = 0
 [State 200, se]
 type = PlaySnd
 triggerall = anim = 231
-trigger1 = AnimElem = 3
+trigger1 = animelemtime(1) = 1
 value = 3,4
 channel = 1
 
@@ -2744,12 +2744,12 @@ hitsound   = s5,2
 guardsound = s10,0
 priority = 4, Hit
 ground.type = High
-ground.slidetime = IfElse(var(20), 22, 16)
-guard.slidetime = IfElse(var(20), 22, 16)
-ground.hittime  = IfElse(var(20), 22, 16)
+ground.slidetime = 20 ;IfElse(var(20), 22, 16)
+guard.slidetime = 20; IfElse(var(20), 22, 16)
+ground.hittime  = 20; IfElse(var(20), 22, 16)
 ground.velocity = -11, IfElse(var(20), -6.2 + fVar(20), 0)
 air.velocity = IfElse(var(20), -9, -4), IfElse(var(20), -6.2, -3.8) + fVar(20)
-guard.velocity = -11
+guard.velocity = -11 ;IfElse(var(20), -18, -11)
 yaccel = 0.45
 getpower = 60,0
 givepower = 30,0
@@ -7472,7 +7472,7 @@ alpha = 0, 255
 type = Posadd
 trigger1 = time = 0
 ;trigger1 = P2BodyDist x > 0
-x = 72
+x = 80;72
 
 [State 200, vel]
 type = veladd

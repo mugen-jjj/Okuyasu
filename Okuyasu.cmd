@@ -148,6 +148,16 @@ name = "22z"
 command = ~D, D, z
 time = 15
 
+[Command]
+name = "6z"
+command = F, z
+time = 12
+
+[Command]
+name = "6z"
+command = ~F, z
+time = 12
+
 ;------------------------------------------------------------------------------
 ;-| ƒL[‚Q‰ñ˜A‘±“ü—Í |---------------------------------------------------------
 
@@ -861,8 +871,8 @@ value = 720
 type = ChangeState
 value = 230
 triggerall = !AILevel
-triggerall = command = "z"
-triggerall = command = "holdfwd"
+;triggerall = command = "z"
+triggerall = command = "6z" ;"holdfwd"
 triggerall = statetype != A
 trigger1 = ctrl && stateno != 100
 trigger2 = (stateno = 200||stateno = 210||stateno = 220||stateno = 400||stateno = 410||stateno = 420) && var(4)
