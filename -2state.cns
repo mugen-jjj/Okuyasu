@@ -1,5 +1,52 @@
 [Statedef -2]
 
+;喰らいボイス用
+;XL
+[State -2, GetHurt Sound]
+type = PlaySnd
+triggerall = stateno != [120,159]
+triggerall = var(56)-life > 200
+triggerall = Alive = 1
+trigger1 = var(56)-life > 0
+trigger1 = movetype = H
+value = 5003, random%2
+channel = 10
+;L
+[State -2, GetHurt Sound]
+type = PlaySnd
+triggerall = stateno != [120,159]
+triggerall = Random%2 = 0 && var(56)-life = (100, 200]
+triggerall = Alive = 1
+trigger1 = var(56)-life > 0
+trigger1 = movetype = H
+value = 5002, random%3
+channel = 10
+;M
+[State -2, GetHurt Sound]
+type = PlaySnd
+triggerall = stateno != [120,159]
+triggerall = Random%3 = 0 && var(56)-life = (50, 100]
+triggerall = Alive = 1
+trigger1 = var(56)-life > 0
+trigger1 = movetype = H
+value = 5001, random%3
+channel = 10
+;S
+[State -2, GetHurt Sound]
+type = PlaySnd
+triggerall = stateno != [120,159]
+triggerall = Random%4 = 0 && var(56)-life = (8, 50]
+triggerall = Alive = 1
+trigger1 = var(56)-life > 0
+trigger1 = movetype = H
+value = 5000, random%3
+channel = 10
+
+[State -2, CornerPush]
+type = VarSet
+trigger1 = 1
+var(56) = life
+
 ;スタンドヘルパー
 [state -2, helper]
 type = helper
@@ -255,37 +302,6 @@ postype = p1
 pos = -60,0
 ownpal = 1
 
-[state -3, snd]
-type = playsnd
-triggerall = random < 400
-triggerall = time = 1
-triggerall = alive
-trigger1 = stateno = 5000
-trigger2 = stateno = 5010
-trigger3 = stateno = 5020
-trigger4 = stateno = 5070
-trigger5 = stateno = 5080
-trigger6 = stateno = 5100
-value = 5000,0+GetHitVar(animtype)
-volume = 255
-channel = 0
-
-[state -3, snd]
-type = playsnd
-triggerall = random < 400
-triggerall = time = 1
-triggerall = alive
-triggerall = GetHitVar(animtype) = 2
-trigger1 = stateno = 5000
-trigger2 = stateno = 5010
-trigger3 = stateno = 5020
-trigger4 = stateno = 5070
-trigger5 = stateno = 5080
-trigger6 = stateno = 5100
-value = 5000,3
-volume = 255
-channel = 0
-
 ;---------------------------------------------------------------------------
 ;Stand gethit
 [state -3, end]
@@ -321,15 +337,7 @@ ctrl = 0
 
 ;---------------------------------------------------------------------------
 
-[State 200, 2];????SE
-type = Playsnd
-trigger1 = numtarget(211)
-trigger1 = target(211),Stateno = 4501
-trigger1 = target(211),time = 1
-trigger1 = target(211),statetype = A
-Value = s510, 0
-
-[State 200, 2];????
+[State 200, 2];
 type = Explod
 trigger1 = numtarget(211)
 trigger1 = target(211),Stateno = 4501

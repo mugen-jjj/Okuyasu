@@ -151,12 +151,12 @@ time = 15
 [Command]
 name = "6z"
 command = F, z
-time = 12
+time = 9
 
 [Command]
 name = "6z"
 command = ~F, z
-time = 12
+time = 9
 
 ;------------------------------------------------------------------------------
 ;-| ƒL[‚Q‰ñ˜A‘±“ü—Í |---------------------------------------------------------
@@ -321,7 +321,7 @@ var(59) = 0
 [State -1, end]
 type = varset
 trigger1 = 1
-var(21) = (ctrl ||stateno = 11 || stateno = 21 || (stateno = 52 && time >= 3 && !var(8)) || (stateno = [120,149]) || (stateno = 52 && time >= 3) || (stateno = 100 && AnimElemTime(4) > 5))
+var(21) = (ctrl ||stateno = 11 || stateno = 21 || (stateno = 52 && time >= 3 && !var(8)) || (stateno = [120,149]) || (stateno = 100 && AnimElemTime(4) > 5))
 
 [State -1, —§‚¿a]
 type = ChangeState

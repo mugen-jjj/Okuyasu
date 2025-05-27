@@ -2306,13 +2306,13 @@ sprpriority = 1
 [State 200, v]
 type = VarSet
 trigger1 = AnimElemTime(1) = 0
-var(4)= 0
+var(4) = 0
 
 [State 200, v]
 type = VarSet
 triggerall = movecontact
 trigger1 = AnimElemTime(2) >= 0
-var(4)= 1
+var(4) = 1
 ignorehitpause = 1
 
 [State 200, vo]
@@ -2379,13 +2379,13 @@ sprpriority = 1
 [State 200, v]
 type = VarSet
 trigger1 = AnimElemTime(1) = 0
-var(4)= 0
+var(4) = 0
 
 [State 200, v]
 type = VarSet
 triggerall = movecontact
 trigger1 = AnimElemTime(3) >= 0
-var(4)= 1
+var(4) = 1
 ignorehitpause = 1
 
 [State 200, pa]
@@ -2460,13 +2460,13 @@ sprpriority = 1
 [State 200, v]
 type = VarSet
 trigger1 = AnimElemTime(1) = 0
-var(4)= 0
+var(4) = 0
 
 [State 200, v]
 type = VarSet
 triggerall = movecontact
 trigger1 = AnimElemTime(3) >= 0
-var(4)= 1
+var(4) = 1
 ignorehitpause = 1
 
 [State 200, w]
@@ -2557,6 +2557,7 @@ trigger1 = facing != root,facing
 type = bindtoroot
 trigger1 = 1
 pos = 32,0
+facing = 1
 
 [State 0, anim]
 type = changeanim
@@ -2649,13 +2650,13 @@ sprpriority = 1
 [State 200, v]
 type = VarSet
 trigger1 = AnimElemTime(1) = 0
-var(4)= 0
+var(4) = 0
 
 [State 200, v]
 type = Null;VarSet
 triggerall = movecontact
 trigger1 = AnimElemTime(3) >= 0
-var(4)= 1
+var(4) = 1
 ignorehitpause = 1
 
 [State 200, charge]
@@ -2706,7 +2707,7 @@ value = 231
 type = VelSet
 triggerall = anim = 231
 trigger1 = animelemtime(1) = 0
-x = IfElse(var(20), 9.6, 6)
+x = 9.6; IfElse(var(20), 9.6, 6)
 
 [State 200, vel]
 type = VelSet
@@ -2744,17 +2745,16 @@ hitsound   = s5,2
 guardsound = s10,0
 priority = 4, Hit
 ground.type = High
-ground.slidetime = 20 ;IfElse(var(20), 22, 16)
-guard.slidetime = 20; IfElse(var(20), 22, 16)
-ground.hittime  = 20; IfElse(var(20), 22, 16)
-ground.velocity = -11, IfElse(var(20), -6.2 + fVar(20), 0)
+ground.slidetime = 20
+guard.slidetime = 20
+ground.hittime  = 20
+ground.velocity = IfElse(var(20), -11, -5.5), IfElse(var(20), -6.2 + fVar(20), -3.8)
 air.velocity = IfElse(var(20), -9, -4), IfElse(var(20), -6.2, -3.8) + fVar(20)
 guard.velocity = -11 ;IfElse(var(20), -18, -11)
 yaccel = 0.45
-getpower = 60,0
-givepower = 30,0
-fall = (var(20))
-air.fall = 1
+getpower = 80,0
+givepower = 40,0
+fall = 1
 fall.recover = 0
 down.bounce = 0
 id = stateno
@@ -2805,13 +2805,13 @@ sprpriority = 2
 [State 200, v]
 type = VarSet
 trigger1 = AnimElemTime(1) = 0
-var(4)= 0
+var(4) = 0
 
 [State 200, v]
 type = VarSet
 triggerall = movecontact
 trigger1 = AnimElemTime(2) >= 0
-var(4)= 1
+var(4) = 1
 ignorehitpause = 1
 
 [State 200, vo]
@@ -2875,13 +2875,13 @@ sprpriority = 2
 [State 200, v]
 type = VarSet
 trigger1 = AnimElemTime(1) = 0
-var(4)= 0
+var(4) = 0
 
 [State 200, v]
 type = VarSet
 triggerall = movecontact
 trigger1 = AnimElemTime(3) >= 1
-var(4)= 1
+var(4) = 1
 ignorehitpause = 1
 
 [State 200, w]
@@ -2926,7 +2926,7 @@ fall.recover = 0
 down.bounce = 0
 sprpriority = 2
 
-[State 200, �X�e�[�g�ύX]
+[State 200, end]
 type = ChangeState
 trigger1 = AnimTime = 0
 value = 11
@@ -2958,10 +2958,12 @@ trigger1 = facing != root,facing
 type = bindtoroot
 trigger1 = animelemtime(2) < 0
 pos = 10,0
+facing = 1
 [State 0, btr]
 type = bindtoroot
 trigger1 = animelemtime(2) >= 0
 pos = 16,0
+facing = 1
 
 [State 200, se]
 type = PlaySnd
@@ -3067,13 +3069,13 @@ sprpriority = 2
 [State 200, v]
 type = VarSet
 trigger1 = AnimElemTime(1) = 0
-var(4)= 0
+var(4) = 0
 
 [State 200, v]
 type = VarSet
 triggerall = movecontact
 trigger1 = AnimElemTime(2) >= 0
-var(4)= 1
+var(4) = 1
 ignorehitpause = 1
 
 [State 200, w]
@@ -3171,6 +3173,7 @@ trigger1 = facing != root,facing
 type = bindtoroot
 trigger1 = 1
 pos = 10,0
+facing = 1
 
 [State 0, anim]
 type = changeanim
@@ -3262,13 +3265,13 @@ sprpriority = 2
 [State 200, v]
 type = VarSet
 trigger1 = AnimElemTime(1) = 0
-var(4)= 0
+var(4) = 0
 
 [State 200, v]
 type = VarSet
 triggerall = movecontact
 trigger1 = AnimElemTime(2) >= 0
-var(4)= 1
+var(4) = 1
 ignorehitpause = 1
 
 [State 600, v]
@@ -3396,13 +3399,13 @@ y = IfElse(var(8) > 0, 0.6, Const(movement.yaccel))
 [State 200, v]
 type = VarSet
 trigger1 = AnimElemTime(1) = 0
-var(4)= 0
+var(4) = 0
 
 [State 200, v]
 type = VarSet
 triggerall = movecontact
 trigger1 = AnimElemTime(2) >= 0
-var(4)= 1
+var(4) = 1
 ignorehitpause = 1
 
 [State 600, v]
@@ -3546,6 +3549,7 @@ trigger1 = facing != root,facing
 type = bindtoroot
 trigger1 = 1
 pos = 20,0
+facing = 1
 
 [State 0, anim]
 type = changeanim
@@ -3636,13 +3640,13 @@ y = IfElse(var(8) > 0, 0.6, Const(movement.yaccel))
 [State 200, v]
 type = VarSet
 trigger1 = AnimElemTime(1) = 0
-var(4)= 0
+var(4) = 0
 
 [State 200, v]
 type = VarSet
 triggerall = movecontact
 trigger1 = AnimElemTime(2) >= 0
-var(4)= 1
+var(4) = 1
 ignorehitpause = 1
 
 [State 200, w]
@@ -3778,6 +3782,7 @@ trigger1 = facing != root,facing
 type = bindtoroot
 trigger1 = 1
 pos = 20,0
+facing = 1
 
 [State 0, anim]
 type = changeanim
@@ -4334,7 +4339,8 @@ value = 0
 
 [State 200, vo]
 type = PlaySnd
-trigger1 = !time
+trigger1 = animelemtime(2) = 0
+trigger1 = random%2 = 0
 value = 800,0+(random%2)
 channel = 0
 
@@ -4347,7 +4353,7 @@ attr = S, NT
 hitflag = M-
 priority = 1, Miss
 sparkno = -1
-p1facing = ifelse((var(20)=-1),-1,1)
+p1facing = 1
 p2facing = 1
 p1stateno = 810
 p2stateno = 820
@@ -4355,7 +4361,7 @@ guard.dist = 0
 numhits = 0
 fall = 1
 
-[State 800, �X�e�[�g�ύX]
+[State 800, end]
 type = ChangeState
 Trigger1 = AnimTime = 0
 value = 0
@@ -4404,9 +4410,25 @@ type = PlaySnd
 trigger1 = !time
 value = 1,0
 
+[State 0, end]
+type = changestate
+trigger1 = time = [0, 4]
+trigger1 = target,command = "a"
+value = 830
+
+[State 810, se]
+type = turn
+trigger1 = var(20) = -1
+trigger1 = time = 5
+[State 810, se]
+type = TargetFacing
+trigger1 = var(20) = -1
+trigger1 = time = 6
+value = -1
+
 [State 810, se]
 type = PlaySnd
-trigger1 = !time
+trigger1 = time = 5
 value = 810, random%2
 channel = 0
 
@@ -4522,46 +4544,148 @@ trigger1 = Vel Y > 0
 trigger1 = Pos Y >= 0
 value = 5100
 
-;===========================================================================
-;kuzureoti
-[Statedef 5950]
-type    = A
-movetype= H
+;---------------------------------------------------------------------------
+;投げぬけ（自分）
+[Statedef 830]
+type = S
+movetype = I
 physics = N
-poweradd= 0
+anim = 830
 velset = 0,0
-ctrl = 0
+
+[State 810, snd]
+type = PlaySnd
+trigger1 = !time
+value = 830, 5
+
+[State 810, snd]
+type = PlaySnd
+trigger1 = time = 10
+value = 700, 20 + random%2
+channel = 0
+
+[State 0, explod]
+type = explod
+trigger1 = time = 0
+anim = 6330
+id = 6330
+pos = 45,-90
+postype = p1
 sprpriority = 1
+ownpal = 1
+shadow = 0,0,0
+scale = .5,.5
+pausemovetime = 999999
+supermovetime = 999999
+[State 0, explod]
+type = explod
+trigger1 = time = 0
+anim = 6330
+id = 6330
+pos = 45,-90
+postype = p1
+facing = -1
+sprpriority = 1
+ownpal = 1
+shadow = 0,0,0
+scale = .5,.5
+pausemovetime = 999999
+supermovetime = 999999
+
+[State 0, target]
+type = targetbind
+triggerall = numtarget
+trigger1 = !time
+pos = 60,0
+
+[State 0, target]
+type = targetstate
+triggerall = numtarget
+trigger1 = !time
+value = 840
+
+[State 0, target]
+type = velset
+trigger1 = time = 20
+x = -10
+
+[State 0, target]
+type = velmul
+trigger1 = time >= 20
+x = .85
+
+[State 0, nhb]
+type = nothitby
+trigger1 = 1
+value = SCA
+
+[State 0, nhb]
+type = posadd
+trigger1 = !animtime
+x = 25
+
+[State 0, nhb]
+type = changestate
+trigger1 = time = 48
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;投げ抜け（相手）
+[Statedef 840]
+type = S
+movetype = I
+physics = N
+velset = 0,0
 
 [State 0, pos]
-type = posadd
-trigger1 = time < 60
-x = 1*ifelse(time%2=0,-1,1)
+type = posset
+trigger1 = !time
+y = 0
 
-[State 200, �X�e�[�g�ύX]
-type = Changeanim
-trigger1 = time < 60
-value = 5011
+[State 0, anim]
+type = changeanim
+trigger1 = time < 20
+trigger1 = selfanimexist(5945)
+value = 5945
 
-[State 200, �X�e�[�g�ύX]
-type = Changeanim
-trigger1 = time = 60
-trigger1 = SelfAnimExist(5950)
-value = 5950
+[State 0, anim]
+type = changeanim
+trigger1 = time < 20
+trigger1 = !selfanimexist(5945)
+value = 130
 
-[State 200, �X�e�[�g�ύX]
-type = Changeanim2
-trigger1 = time = 60
-trigger1 = !SelfAnimExist(5950)
-value = 950
+[State 0, anim]
+type = changeanim
+trigger1 = anim = 130
+trigger1 = time = 20
+value = 150
 
-[State 200, �X�e�[�g�ύX]
+[State 0, nhb]
+type = nothitby
+trigger1 = 1
+value = SCA
+
+[State 0, target]
+type = velset
+trigger1 = time = 20
+x = -7
+
+[State 0, target]
+type = velmul
+trigger1 = time >= 20
+x = .85
+
+[State 0, nhb]
+type = nothitby
+trigger1 = 1
+value = SCA
+
+[State 0, nhb]
 type = selfstate
-trigger1 = anim = 5950
-trigger1 = animtime = 65 || !animtime
-trigger2 = anim = 950
-trigger2 = !animtime
-value = 5120
+trigger1 = time = 48
+value = 0
+ctrl = 1
 
 ;===========================================================================
 ; hissatsu
@@ -4739,6 +4863,7 @@ value = 1050 + var(20)
 type = bindtoroot
 trigger1 = time = 0
 pos = 25,0
+facing = 1
 
 [State 0, end]
 type = varset
@@ -4765,13 +4890,13 @@ ignorehitpause = 1
 [State 200, v]
 type = VarSet
 trigger1 = Time = 0
-var(4)= 0
+var(4) = 0
 
 [State 200, v]
 type = VarSet
 trigger1 = MoveContact
 trigger1 = numTarget(1050)
-var(4)= 1
+var(4) = 1
 ignorehitpause = 1
 
 [State 0, PlaySnd]
@@ -5252,6 +5377,7 @@ value = 1150 + var(2)
 type = bindtoroot
 trigger1 = time = 0
 pos = 25,0
+facing = 1
 
 [State 0, VelAdd]
 type = PosAdd
@@ -5262,13 +5388,13 @@ x = 9
 type = VarSet
 trigger1 = Time = 0
 trigger2 = animelem = 10
-var(4)= 0
+var(4) = 0
 
 [State 200, v]
 type = VarSet
 trigger1 = (var(2) != 2 || animelemtime(10) < 0)
 trigger1 = MoveContact
-var(4)= 1
+var(4) = 1
 ignorehitpause = 1
 
 [State 0, end]
@@ -6257,6 +6383,7 @@ value = 1050 + var(20)
 type = bindtoroot
 trigger1 = time = 0
 pos = 15,0
+facing = 1
 
 [State 0, end]
 type = varset
@@ -6282,13 +6409,13 @@ ignorehitpause = 1
 [State 200, v]
 type = VarSet
 trigger1 = AnimElemTime(1) = 0
-var(4)= 0
+var(4) = 0
 
 [State 200, v]
 type = VarSet
 triggerall = movecontact
 trigger1 = AnimElemTime(4) >= 0
-var(4)= 1
+var(4) = 1
 ignorehitpause = 1
 
 [State 0, snd]
@@ -6672,7 +6799,7 @@ var(20)= 0
 [State 200, v]
 type = VarSet
 trigger1 = Time = 0
-var(4)= 0
+var(4) = 0
 
 [State 200, v]
 type = VarSet
@@ -6688,6 +6815,7 @@ value = 2050
 type = bindtoroot
 trigger1 = time <= 1
 pos = 20,0
+facing = 1
 
 [State 0, btr]
 type = AttackDist
@@ -7072,7 +7200,7 @@ attr = S, SA
 animtype  = Hard
 damage    = ceil(Ifelse(var(20), 104 ,60)*root,fVar(10))
 ;guardflag = 
-pausetime = 0,21
+pausetime = 0,13
 guard.pausetime = 8,8
 sparkno = s6002
 guard.sparkno = s6040
@@ -7115,7 +7243,7 @@ trigger1 = var(8) > 0
 type = varset
 trigger1 = numtarget(2050)
 trigger1 = movecontact = 1
-var(8) = 16
+var(8) = 13
 ignorehitpause = 1
 
 [State 0, var]
@@ -7311,6 +7439,11 @@ air.cornerpush.veloff = 0
 sprpriority = 1
 numhits = 0
 ID = 2080
+
+[State 9000, Assert]
+type = Null
+trigger1 = movecontact = 1
+trigger1 = parent,cond(1, var(4):= 1, 0)
 
 [State 0, end]
 type = DestroySelf
@@ -7616,7 +7749,7 @@ ignorehitpause = 1
 [State 200, v]
 type = VarSet
 trigger1 = Time = 0
-var(4)= 0
+var(4) = 0
 
 [State 0, turn]
 type = turn
@@ -7627,6 +7760,7 @@ trigger1 = facing != root,facing
 type = bindtoroot
 trigger1 = time <= 9
 pos = 15,0
+facing = 1
 
 [State 0, btr]
 type = AttackDist
@@ -8252,11 +8386,12 @@ var(8)= 0
 type = bindtoroot
 trigger1 = time = 0
 pos = 15,0
+facing = 1
 
 [State 200, v]
 type = VarSet
 trigger1 = Time = 0
-var(4)= 0
+var(4) = 0
 
 [State 810, ]
 type = nothitby
@@ -8668,11 +8803,11 @@ trigger2 = time = 28
 trigger3 = time = 56
 value = 1001,3
 
-[state 1123,??’?]
+[state 1123, bind]
 type=bindtoroot
-trigger1=1
-facing=1
+trigger1 = 1
 pos = 18, 10
+facing = 1
 
 [State 0, DestroySelf]
 type = DestroySelf
@@ -8684,7 +8819,7 @@ trigger1=parent,stateno!=3050
 anim = 1114
 sprpriority = 5
 
-[state 1123,??’?]
+[state 1123, bind]
 type=bindtoroot
 trigger1=1
 facing=1
@@ -8707,7 +8842,7 @@ velset = 0,0
 anim = 1114
 sprpriority = 5
 
-[state 1123,??’?]
+[state 1123, bind]
 type=bindtoroot
 trigger1=1
 facing=1
@@ -8946,6 +9081,7 @@ value = SCA
 type = bindtoroot
 trigger1 = time = 0
 pos = 20,0
+facing = 1
 
 [State 0, end]
 type = varset
@@ -8971,7 +9107,7 @@ ignorehitpause = 1
 [State 200, v]
 type = VarSet
 trigger1 = Time = 0
-var(4)= 0
+var(4) = 0
 
 [State 230, 1]
 type = PlaySnd
@@ -9515,12 +9651,6 @@ scale = .23,.23
 sprpriority = 6
 removeongethit = 1
 
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = animelem = 17
-value = 100,30
-channel = 0
-
 [State 0, HitAdd]
 type = HitAdd
 trigger1 = animelem = 17
@@ -9714,12 +9844,6 @@ mul = 0,0,0
 time = 1
 ignorehitpause = 1
 
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = animelem = 5
-value = 100,29
-channel = 0
-
 [State 220, 3]
 type = ChangeState
 trigger1 = NumHelper(10000)
@@ -9748,12 +9872,6 @@ trigger1 = time <= 274
 mul = 0,0,0
 time = 1
 ignorehitpause = 1
-
-[State 0, PlaySnd]
-type = PlaySnd
-trigger1 = animelem = 2
-value = 100,31
-channel = 0
 
 [State 0, PlaySnd]
 type = PlaySnd
@@ -10524,7 +10642,7 @@ id = 226
 type = bindtoroot
 trigger1 = 1
 pos = 0,0
-ignorehitpause = 1
+facing = 1
 
 [State 0, assert]
 type = assertspecial
