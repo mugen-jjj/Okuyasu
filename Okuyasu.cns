@@ -14,7 +14,7 @@
 ; Var(11) = 
 ; Var(12) = 
 ; Var(13) = ヒット
-; Var(14) = 投げ補正
+; Var(14) = 壁バウンド
 ; Var(15) = 
 ; Var(16) = 
 ; Var(17) = 死亡フラグ
@@ -32,7 +32,7 @@
 ; Var(28) = 
 ; Var(29) = 
 ;
-; Var(30) = 
+; Var(30) = 空中Skill制限
 ; Var(31) = 
 ; Var(32) = 
 ; Var(33) = 
@@ -2762,7 +2762,7 @@ id = stateno
 [State 800]
 type = TargetState
 triggerall = (var(20))
-triggerall = var(9)
+triggerall = var(14)
 triggerall = numtarget(StateNo)
 triggerall = target(StateNo),movetype = H
 trigger1 = time > 1 && movehit
@@ -2777,7 +2777,7 @@ triggerall = (var(20))
 triggerall = numtarget(StateNo)
 triggerall = target(StateNo),movetype = H
 trigger1 = time > 1 && movehit
-trigger1 = 1 || var(9) := 1
+trigger1 = 1 || var(14) := 1
 value = 4400
 id = StateNo
 IgnoreHitPause = 1
@@ -7542,16 +7542,16 @@ y = .75
 [State 200, var]
 type = Varset
 trigger1 = Time = 0
-var(30)= 1
+var(30) = 1
 
 [State 200, var]
 type = Varset
 trigger1 = Time = 0
-fvar(8)= vel x
+fvar(8) = vel x
 [State 200, var]
 type = Varset
 trigger1 = Time = 0
-fvar(9)= vel y
+fvar(9) = vel y
 
 [State 0, snd]
 type = playsnd

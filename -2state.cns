@@ -5,7 +5,7 @@
 [State -2, GetHurt Sound]
 type = PlaySnd
 triggerall = stateno != [120,159]
-triggerall = var(56)-life > 200
+triggerall = var(56)-life >= 200
 triggerall = Alive = 1
 trigger1 = var(56)-life > 0
 trigger1 = movetype = H
@@ -15,7 +15,7 @@ channel = 10
 [State -2, GetHurt Sound]
 type = PlaySnd
 triggerall = stateno != [120,159]
-triggerall = Random%2 = 0 && var(56)-life = (100, 200]
+triggerall = Random%2 = 0 && var(56)-life = [100, 200)
 triggerall = Alive = 1
 trigger1 = var(56)-life > 0
 trigger1 = movetype = H
@@ -25,7 +25,7 @@ channel = 10
 [State -2, GetHurt Sound]
 type = PlaySnd
 triggerall = stateno != [120,159]
-triggerall = Random%3 = 0 && var(56)-life = (50, 100]
+triggerall = Random%3 = 0 && var(56)-life = [50, 100)
 triggerall = Alive = 1
 trigger1 = var(56)-life > 0
 trigger1 = movetype = H
@@ -35,7 +35,7 @@ channel = 10
 [State -2, GetHurt Sound]
 type = PlaySnd
 triggerall = stateno != [120,159]
-triggerall = Random%4 = 0 && var(56)-life = (8, 50]
+triggerall = Random%4 = 0 && var(56)-life = [8, 50)
 triggerall = Alive = 1
 trigger1 = var(56)-life > 0
 trigger1 = movetype = H
@@ -47,7 +47,14 @@ type = VarSet
 trigger1 = 1
 var(56) = life
 
-;スタンドヘルパー
+[State 5910]
+type = PlaySnd
+trigger1 = anim = 5910
+trigger1 = animelemtime(1) = 1
+value = 5910, random%2
+channel = 10
+
+;スタンドヘルパ拏
 [state -2, helper]
 type = helper
 trigger1 = roundstate = 2
@@ -64,7 +71,7 @@ pausemovetime = 0
 supermovetime = 0
 
 
-[State -3, AI用ヘルパー]
+[State -3, AI用ヘルパ拏]
 type=helper
 trigger1 = !NumHelper(50000)
 helpertype=normal
@@ -78,23 +85,19 @@ supermovetime=2147483647
 persistent = 0
 
 
-;--------------------------------------------------------------------------------
-;空S制限
-[State 200, var]
+[State -2,????????]
+type = VarSet
+triggerall = var(9) != 0
+trigger1 = EnemyNear,MoveType != H
+trigger1 = NumTarget = 0
+var(14) = 0
+
+[State 200, ??Skill????]
 type = Varset
 trigger1 = StateType != A
 trigger2 = MoveType = H
-var(30)= 0
+var(30) = 0
 
-;--------------------------------------------------------------------------------
-;崩れ落ち制限
-
-[State -2]
-type = varset
-trigger1 = p2movetype != H
-var(21) = 0
-
-;--------------------------------------------------------------------------------
 [State -2, hit]
 type = VarAdd
 triggerall = !(stateno=[800,810])
