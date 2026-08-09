@@ -101,7 +101,7 @@ var(14) = 0
 type = Varset
 trigger1 = StateType != A
 trigger2 = MoveType = H
-var(30) = 0
+var(18) = 0
 
 [State -2, hit]
 type = VarAdd
@@ -283,6 +283,148 @@ IgnoreHitPause = 1
 
 
 ;---------------------------------------------------------------------------
+;æs“ü—Í
+[State -2, reduce]
+type = VarAdd
+trigger1 = var(30) > 0
+var(30) = -1
+[State -2, reset]
+type = VarSet
+trigger1 = var(30) = 0
+var(31) = 0
+
+[State -2, senko];
+type = VarAdd
+trigger1 = !(var(31)&2**0)
+trigger1 = Command = "a"
+trigger1 = var(30) := 3
+var(31) = 2**0
+[State -2, senko];
+type = VarAdd
+trigger1 = !(var(31)&2**1)
+trigger1 = Command = "b"
+trigger1 = var(30) := 3
+var(31) = 2**1
+[State -2, senko];
+type = VarAdd
+trigger1 = !(var(31)&2**2)
+trigger1 = Command = "c"
+trigger1 = var(30) := 3
+var(31) = 2**2
+[State -2, senko];
+type = VarAdd
+trigger1 = !(var(31)&2**3)
+trigger1 = Command = "x"
+trigger1 = var(30) := 3
+var(31) = 2**3
+[State -2, senko];
+type = VarAdd
+trigger1 = !(var(31)&2**4)
+trigger1 = Command = "y"
+trigger1 = var(30) := 3
+var(31) = 2**4
+[State -2, senko];
+type = VarAdd
+trigger1 = !(var(31)&2**5)
+trigger1 = Command = "z"
+trigger1 = var(30) := 3
+var(31) = 2**5
+[State -2, senko];
+type = VarAdd
+trigger1 = !(var(31)&2**6)
+trigger1 = Command = "start"
+trigger1 = var(30) := 3
+var(31) = 2**6
+
+[State -2, senko];
+type = VarAdd
+trigger1 = !(var(31)&2**7)
+trigger1 = Command = "FF"
+trigger1 = var(30) := 3
+var(31) = 2**7
+[State -2, senko];
+type = VarAdd
+trigger1 = !(var(31)&2**8)
+trigger1 = Command = "BB"
+trigger1 = var(30) := 3
+var(31) = 2**8
+
+[State -2, senko];
+type = VarAdd
+trigger1 = !(var(31)&2**9)
+trigger1 = Command = "6z"
+trigger1 = var(30) := 3
+var(31) = 2**9
+
+[State -2, senko];
+type = VarAdd
+trigger1 = !(var(31)&2**10)
+trigger1 = Command = "236x"
+trigger1 = var(30) := 3
+var(31) = 2**10
+[State -2, senko];
+type = VarAdd
+trigger1 = !(var(31)&2**11)
+trigger1 = Command = "236y"
+trigger1 = var(30) := 3
+var(31) = 2**11
+[State -2, senko];
+type = VarAdd
+trigger1 = !(var(31)&2**12)
+trigger1 = Command = "236z"
+trigger1 = var(30) := 3
+var(31) = 2**12
+[State -2, senko];
+type = VarAdd
+trigger1 = !(var(31)&2**13)
+trigger1 = Command = "623x"
+trigger1 = var(30) := 3
+var(31) = 2**13
+[State -2, senko];
+type = VarAdd
+trigger1 = !(var(31)&2**14)
+trigger1 = Command = "623y"
+trigger1 = var(30) := 3
+var(31) = 2**14
+[State -2, senko];
+type = VarAdd
+trigger1 = !(var(31)&2**15)
+trigger1 = Command = "623z"
+trigger1 = var(30) := 3
+var(31) = 2**15
+[State -2, senko];
+type = VarAdd
+trigger1 = !(var(31)&2**16)
+trigger1 = Command = "214x"
+trigger1 = var(30) := 3
+var(31) = 2**16
+[State -2, senko];
+type = VarAdd
+trigger1 = !(var(31)&2**17)
+trigger1 = Command = "214y"
+trigger1 = var(30) := 3
+var(31) = 2**17
+[State -2, senko];
+type = VarAdd
+trigger1 = !(var(31)&2**18)
+trigger1 = Command = "214z"
+trigger1 = var(30) := 3
+var(31) = 2**18
+
+[State -2, senko];
+type = VarAdd
+trigger1 = !(var(31)&2**20)
+trigger1 = command = "236aa" || command = "236b"
+trigger1 = var(30) := 3
+var(31) = 2**20
+
+[State -2, senko];
+type = VarAdd
+trigger1 = !(var(31)&2**21)
+trigger1 = command = "214aa" || command = "214b"
+trigger1 = var(30) := 3
+var(31) = 2**21
+
 ;---------------------------------------------------------------------------
 [Statedef -3]
 

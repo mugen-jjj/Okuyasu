@@ -5588,7 +5588,7 @@ var(20) = 0
 type = VarSet
 trigger1 = !AILevel
 trigger1 = Time = 0
-var(2) = IfElse(command = "623z", 2, 0)
+var(2) = IfElse((Command = "623z" || var(31)&2**15), 2, 0)
 
 [State 0, command]
 type = VarSet
@@ -6649,7 +6649,7 @@ sprpriority = 1
 [State 0, snd]
 type = varset
 trigger1 = !time
-var(2) = ifelse(command="214z", 2, 0)
+var(2) = IfElse((Command = "214z" || var(31)&2**18), 2, 0)
 
 [State 0, anim]
 type = changeanim
@@ -8306,7 +8306,7 @@ y = .75
 [State 200, var]
 type = Varset
 trigger1 = Time = 0
-var(30) = 1
+var(18) = 1
 
 [State 200, var]
 type = Varset
