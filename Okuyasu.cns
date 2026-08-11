@@ -2482,7 +2482,7 @@ trigger1 = AnimElem = 3
 attr = S, NA
 animtype  = Up
 damage    = ceil(70*fVar(10)),0
-guardflag = M
+guardflag = MA
 pausetime = 13,13
 sparkno = s6002
 guard.sparkno = s6040
@@ -2497,6 +2497,7 @@ ground.hittime  = 16
 ground.velocity = -1.0, -10.4 + fVar(20)
 guard.velocity = -3.5
 air.velocity = -1.0, -10.4 + fVar(20)
+airguard.velocity = -4.5, -4
 yaccel = 0.45
 getpower = 80*(var(5)), 0
 givepower = 40, 0
@@ -5109,19 +5110,15 @@ sprpriority = 1
 
 [State 0, command]
 type = VarSet
-trigger1 = Time = 0
-var(20) = 0
-
-[State 0, command]
-type = VarSet
 trigger1 = !AILevel
-trigger1 = command = "236z"
-var(20) = 2
+trigger1 = Time = 0
+var(2) = IfElse((Command = "236z" || var(31)&2**12), 2, 0)
 
 [State 0, var]
 type = VarSet
 trigger1 = AILevel
-var(20) = (P2Bodydist x > 120 && random % 2 = 0)*2
+trigger1 = Time = 0
+var(2) = (P2Bodydist x > 120 && random % 2 = 0)*2
 
 [State 0, snd]
 type = playsnd
@@ -5258,12 +5255,12 @@ var(8) = 0
 [State 0, var]
 type = varset
 trigger1 = !time
-var(20) = root,var(20)
+var(2) = root,var(2)
 
 [State 0, ]
 type = changeanim
 trigger1 = Time = 0
-value = 1050 + var(20)
+value = 1050 + var(2)
 
 [State 0, btr]
 type = bindtoroot
@@ -5315,7 +5312,7 @@ anim = 1014
 pos = 3,15
 postype = p1
 ownpal = 1
-removetime = IfElse(var(20) = 2, 16, 10)
+removetime = IfElse(var(2) = 2, 16, 10)
 bindtime = -1
 sprpriority = 5
 ignorehitpause = 1
@@ -5362,7 +5359,7 @@ type = VelSet
 trigger1 = AnimElemTime(8) = 0
 trigger2 = AnimElemTime(14) = 0
 trigger3 = AnimElemTime(20) = 0
-x = IfElse(var(20) = 2, 10.2, 6)
+x = IfElse(var(2) = 2, 10.2, 6)
 
 [State 1000, vel]
 type = VelMul
